@@ -25,8 +25,21 @@ def greedy_scaloni_por_scaloni(tiempos: List[Tuple[int, int]]) -> List[Tuple[int
     return sorted(tiempos, key=lambda t: t[0])
 
 
+def cargar_tiempos(path) -> List[Tuple[int, int]]:
+    with open(path, "r") as archivo:
+        lineas = archivo.readlines()
+        tiempos = []
+        for linea in lineas[1:]:
+            t_i = linea.strip().split(',')
+            s_i = int(t_i[0])
+            a_i = int(t_i[1])
+            tiempos.append((s_i, a_i))
+
+    return tiempos
+
+
 def main():
-    tiempos = [(1, 1), (3, 2), (2, 3), (4, 4), (5, 50)]
+    tiempos = cargar_tiempos("casos/10000 elem.csv")
     print(greedy_scaloni_por_ayudante(tiempos))
     print(greedy_scaloni_por_diferencia(tiempos))
     print(greedy_scaloni_por_scaloni(tiempos))
