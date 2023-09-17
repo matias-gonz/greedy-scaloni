@@ -38,11 +38,25 @@ def cargar_tiempos(path) -> List[Tuple[int, int]]:
     return tiempos
 
 
+def calcular_tiempo_final(tiempos: List[Tuple[int, int]]) -> int:
+    """
+    :param tiempos: lista de tuplas con los tiempos de Scaloni y ayudante (S_i, A_i)
+    :return: tiempo final que tomara analizar todos los casos
+    """
+    t_scaloni = 0
+    t_final = 0
+    for tiempo in tiempos:
+        t_scaloni += tiempo[0]
+        t_final = max(t_final, t_scaloni + tiempo[1])
+    return t_final
+
+
 def main():
     tiempos = cargar_tiempos("casos/10000 elem.csv")
-    print(greedy_scaloni_por_ayudante(tiempos))
-    print(greedy_scaloni_por_diferencia(tiempos))
-    print(greedy_scaloni_por_scaloni(tiempos))
+    print(calcular_tiempo_final(tiempos))
+    print(calcular_tiempo_final(greedy_scaloni_por_ayudante(tiempos)))
+    print(calcular_tiempo_final(greedy_scaloni_por_diferencia(tiempos)))
+    print(calcular_tiempo_final(greedy_scaloni_por_scaloni(tiempos)))
 
 
 main()
