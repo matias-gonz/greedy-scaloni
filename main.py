@@ -2,10 +2,10 @@ import time
 from typing import List, Tuple, Callable
 import argparse
 
-from algoritmos import ALGORITMOS
+from algoritmos import ALGORITMOS, calcular_tiempo_analisis
 
 
-def cargar_tiempos(path) -> List[Tuple[int, int]]:
+def cargar_tiempos(path: str) -> List[Tuple[int, int]]:
     """
     :param path: path del archivo con los tiempos en formato Si,Ai
     :return: lista de tuplas con los tiempos de Scaloni y ayudante (S_i, A_i)
@@ -20,19 +20,6 @@ def cargar_tiempos(path) -> List[Tuple[int, int]]:
             tiempos.append((s_i, a_i))
 
     return tiempos
-
-
-def calcular_tiempo_analisis(tiempos: List[Tuple[int, int]]) -> int:
-    """
-    :param tiempos: lista de tuplas con los tiempos de Scaloni y ayudante (S_i, A_i)
-    :return: tiempo final que tomara analizar todos los casos
-    """
-    t_scaloni = 0
-    t_final = 0
-    for tiempo in tiempos:
-        t_scaloni += tiempo[0]
-        t_final = max(t_final, t_scaloni + tiempo[1])
-    return t_final
 
 
 def parsear_argumentos() -> Tuple[str, Callable[[List[Tuple[int, int]]], List[Tuple[int, int]]]]:
