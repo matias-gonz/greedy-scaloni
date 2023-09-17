@@ -2,7 +2,7 @@ import time
 from typing import List, Tuple, Callable
 import argparse
 
-from algoritmos import greedy_scaloni_por_ayudante, greedy_scaloni_por_diferencia, greedy_scaloni_por_scaloni
+from algoritmos import ALGORITMOS
 
 
 def cargar_tiempos(path) -> List[Tuple[int, int]]:
@@ -39,9 +39,6 @@ def parsear_argumentos() -> Tuple[str, Callable[[List[Tuple[int, int]]], int]]:
     """
     :return: tupla con el path del archivo y la funcion del algoritmo a utilizar
     """
-    ALGORITMOS = {"ayudante": greedy_scaloni_por_ayudante,
-                  "diferencia": greedy_scaloni_por_diferencia,
-                  "scaloni": greedy_scaloni_por_scaloni}
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", "--path", help="Ruta al archivo de tiempos", required=True)

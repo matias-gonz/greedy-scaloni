@@ -23,3 +23,8 @@ def greedy_scaloni_por_scaloni(tiempos: List[Tuple[int, int]]) -> List[Tuple[int
     :return: lista de ordenada por S_i en orden ascendente
     """
     return sorted(tiempos, key=lambda t: t[0])
+
+
+ALGORITMOS = {"ayudante": greedy_scaloni_por_ayudante,
+              "diferencia": greedy_scaloni_por_diferencia,
+              "scaloni": greedy_scaloni_por_scaloni}
