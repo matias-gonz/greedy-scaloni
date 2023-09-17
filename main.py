@@ -35,7 +35,7 @@ def calcular_tiempo_analisis(tiempos: List[Tuple[int, int]]) -> int:
     return t_final
 
 
-def parsear_argumentos() -> Tuple[str, Callable[[List[Tuple[int, int]]], int]]:
+def parsear_argumentos() -> Tuple[str, Callable[[List[Tuple[int, int]]], List[Tuple[int, int]]]]:
     """
     :return: tupla con el path del archivo y la funcion del algoritmo a utilizar
     """
